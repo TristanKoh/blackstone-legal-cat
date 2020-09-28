@@ -1,9 +1,10 @@
 from pathlib import Path
 import pandas as pd
 
-dataFilePath = Path("data", "spandeck.txt")
+# This depends on your working directory: import os then run os.getcwd() to check, change path as necessary
+dataFilePath = Path("blackstone-legal-cat", "data", "spandeck.txt")
 
-spandeck = open(dataFilePath, "r", encoding= "utf8")
+spandeck = open(dataFilePath, "r", encoding = "utf8")
 
 # This returns a stream (i.e. generator object), save it to list
 text = spandeck.readlines()
@@ -74,5 +75,7 @@ df["category"].unique()
 for sentence in df.loc[df["category"] == "LEGAL_TEST", "sentence"][:30]:
     print(sentence)
     print("-" * 40)
+
+df.head()
 
 # df.to_csv(r"C:\\Users\\Tristan\\Desktop\\Projects\\blackstone\\data\\df.csv", index = False, encoding = "utf-8-sig")
